@@ -2,8 +2,10 @@
 import { useEffect } from "react";
 
 // MapBox
-// import mapboxgl from "mapbox-gl/dist/mapbox-gl";
-import mapboxgl from "mapbox-gl";
+import mapboxgl from "mapbox-gl/dist/mapbox-gl";
+
+// MUI Components
+import Card from "@mui/material/Card";
 
 const MapContainer = () => {
   useEffect(() => {
@@ -22,7 +24,21 @@ const MapContainer = () => {
     };
   }, []);
 
-  return <div id="map"></div>;
+  return (
+    <Card
+      variant="outlined"
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        mx: "auto",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <div id="map"></div>
+    </Card>
+  );
 };
 
 export default MapContainer;
