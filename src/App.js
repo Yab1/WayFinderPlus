@@ -1,4 +1,5 @@
 // Contexts
+import StateControllerContextProvider from "./Context/stateControllerContext";
 import MapMetaDataContextProvider from "./Context/mapMetaDataContext";
 import BuildingsContextProvider from "./Context/buildingsContext";
 
@@ -12,15 +13,17 @@ import Footer from "./Components/IndoorNav/Footer/Footer";
 function App() {
   return (
     <div className="App">
-      <MapMetaDataContextProvider>
-        <BuildingsContextProvider>
-          <Header />
-          <MapContainer />
-          <SideBarLeft />
-          <SideBarRight />
-          <Footer />
-        </BuildingsContextProvider>
-      </MapMetaDataContextProvider>
+      <StateControllerContextProvider>
+        <MapMetaDataContextProvider>
+          <BuildingsContextProvider>
+            <Header />
+            <MapContainer />
+            <SideBarLeft />
+            <SideBarRight />
+            <Footer />
+          </BuildingsContextProvider>
+        </MapMetaDataContextProvider>
+      </StateControllerContextProvider>
     </div>
   );
 }
