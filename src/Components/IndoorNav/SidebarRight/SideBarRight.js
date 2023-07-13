@@ -2,7 +2,13 @@
 import { useContext } from "react";
 
 // Context
+import { StateControllerContext } from "../../../Context/stateControllerContext";
 import { MapMetaDataContext } from "../../../Context/mapMetaDataContext";
+
+// Functions
+import getUserLocation from "../../../functions/getUserLocation";
+import zoomIn from "../../../functions/zoomIn";
+import zoomOut from "../../../functions/zoomOut";
 
 // MUI Components
 import Stack from "@mui/material/Stack";
@@ -20,7 +26,8 @@ import CircleRoundedIcon from "@mui/icons-material/CircleRounded";
 import { orange } from "@mui/material/colors";
 
 const SideBarRight = () => {
-  const { getUserLocation, zoomIn, zoomOut } = useContext(MapMetaDataContext);
+  const { setUserLocationState } = useContext(StateControllerContext);
+  const { map } = useContext(MapMetaDataContext);
   return (
     <div className="SideBarRight">
       <Stack direction="column" spacing={2}>
@@ -48,18 +55,26 @@ const SideBarRight = () => {
           aria-label="Location"
           size="large"
           sx={{ marginBottom: 2 }}
-          onClick={getUserLocation}
+          onClick={() => getUserLocation(map, setUserLocationState)}
         >
           <Avatar sx={{ bgcolor: orange[900] }} variant="rounded">
             <GpsNotFixedIcon fontSize="inherit" />
           </Avatar>
         </IconButton>
-        <IconButton aria-label="zoomIn icon" size="large" onClick={zoomIn}>
+        <IconButton
+          aria-label="zoomIn icon"
+          size="large"
+          onClick={() => zoomIn(map)}
+        >
           <Avatar variant="rounded">
             <AddIcon fontSize="inherit" />
           </Avatar>
         </IconButton>
-        <IconButton aria-label="minus icon" size="large" onClick={zoomOut}>
+        <IconButton
+          aria-label="minus icon"
+          size="large"
+          onClick={() => zoomOut(map)}
+        >
           <Avatar variant="rounded">
             <RemoveIcon fontSize="inherit" />
           </Avatar>
