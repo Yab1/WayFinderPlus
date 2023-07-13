@@ -1,5 +1,12 @@
+// Components
+import DetailCard from "./detailCard";
+
 const Footer = () => {
-  return <footer className="Footer">Footer</footer>;
+  return (
+    <footer className="Footer">
+      <DetailCard />
+    </footer>
+  );
 };
 
 export default Footer;
