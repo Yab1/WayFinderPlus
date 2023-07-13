@@ -1,11 +1,17 @@
+// React
+import { useContext } from "react";
+
+// Context
+import { MapMetaDataContext } from "../../../Context/mapMetaDataContext";
+
 // MUI Components
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
 
 // MUI Icons
-import AddBoxIcon from "@mui/icons-material/AddBox";
-import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import GpsNotFixedIcon from "@mui/icons-material/GpsNotFixed";
 import AltRouteIcon from "@mui/icons-material/AltRoute";
 import CircleRoundedIcon from "@mui/icons-material/CircleRounded";
@@ -14,6 +20,7 @@ import CircleRoundedIcon from "@mui/icons-material/CircleRounded";
 import { orange } from "@mui/material/colors";
 
 const SideBarRight = () => {
+  const { getUserLocation, zoomIn, zoomOut } = useContext(MapMetaDataContext);
   return (
     <div className="SideBarRight">
       <Stack direction="column" spacing={2}>
@@ -24,7 +31,9 @@ const SideBarRight = () => {
           <CircleRoundedIcon fontSize="inherit" sx={{ bgcolor: "primary" }} />
         </IconButton>
         <IconButton aria-label="route icon" size="large">
-          <AltRouteIcon sx={{ bgcolor: "primary" }} />
+          <Avatar>
+            <AltRouteIcon />
+          </Avatar>
         </IconButton>
         <IconButton aria-label="circle icon" disabled size="small">
           <CircleRoundedIcon fontSize="inherit" sx={{ bgcolor: "primary" }} />
@@ -34,18 +43,26 @@ const SideBarRight = () => {
         </IconButton>
       </Stack>
 
-      <Stack direction="column" spacing={2}>
-        <IconButton aria-label="Location" size="large">
-          <GpsNotFixedIcon
-            fontSize="inherit"
-            sx={{ bgcolor: "primary", color: orange[900] }}
-          />
+      <Stack direction="column" spacing={0}>
+        <IconButton
+          aria-label="Location"
+          size="large"
+          sx={{ marginBottom: 2 }}
+          onClick={getUserLocation}
+        >
+          <Avatar sx={{ bgcolor: orange[900] }} variant="rounded">
+            <GpsNotFixedIcon fontSize="inherit" />
+          </Avatar>
         </IconButton>
-        <IconButton aria-label="add icon" size="large">
-          <AddBoxIcon fontSize="inherit" />
+        <IconButton aria-label="zoomIn icon" size="large" onClick={zoomIn}>
+          <Avatar variant="rounded">
+            <AddIcon fontSize="inherit" />
+          </Avatar>
         </IconButton>
-        <IconButton aria-label="minus icon" size="large">
-          <IndeterminateCheckBoxIcon fontSize="inherit" />
+        <IconButton aria-label="minus icon" size="large" onClick={zoomOut}>
+          <Avatar variant="rounded">
+            <RemoveIcon fontSize="inherit" />
+          </Avatar>
         </IconButton>
       </Stack>
     </div>
