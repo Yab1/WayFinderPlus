@@ -1,8 +1,13 @@
 // React
-import { useEffect, useContext, useRef } from "react";
+import { useEffect, useContext, useState } from "react";
 
 // Contexts
+import { StateControllerContext } from "../../../Context/stateControllerContext";
 import { MapMetaDataContext } from "../../../Context/mapMetaDataContext";
+import { BuildingsContext } from "../../../Context/buildingsContext";
+
+// Functions
+import createMarker from "../../../functions/createMarker";
 
 // MapBox
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
@@ -12,24 +17,32 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Card from "@mui/material/Card";
 
 const MapContainer = () => {
-  const { currentMap, handleMap } = useContext(MapMetaDataContext);
+  const { setCurrentClickedLocationState } = useContext(StateControllerContext);
+  const { map, handleMap } = useContext(MapMetaDataContext);
+  const { buildingsData } = useContext(BuildingsContext);
 
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoiYWZyb2hhYmVzaGEiLCJhIjoiY2xnb3F0cDYzMGYzNjNlb2d2dXhtdzRqbSJ9.JW2kyDZjoOWoXVPG5Giw7g";
-    const map = new mapboxgl.Map({
+    const mapBox = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/outdoors-v12",
-      center: [currentMap[0].center.latitude, currentMap[0].center.longitude],
+      center: [39.29039343419677, 8.563261132878523],
       zoom: 15.5,
       attributionControl: false,
     });
-    handleMap(map);
+    handleMap(mapBox);
 
     return () => {
-      map.remove();
+      mapBox.remove();
     };
-  }, [currentMap]);
+  }, []);
+
+  useEffect(() => {
+    if (map && buildingsData) {
+      createMarker(map, buildingsData, setCurrentClickedLocationState);
+    }
+  }, [buildingsData, map]);
 
   return (
     <Card
