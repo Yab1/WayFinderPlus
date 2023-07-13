@@ -1,44 +1,65 @@
 // React
 import { useContext, useEffect, useState } from "react";
 
-// assets
-// import Thumbnail from "../../../assets/Thumbnail image.jpeg";
-import Thumbnail from "../../../assets/IMG_1803.jpeg";
+// Context
+import { StateControllerContext } from "../../../Context/stateControllerContext";
 
 // MUI Components
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { grey } from "@mui/material/colors";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import IconButton from "@mui/material/IconButton";
+
+// MUI Icon
+import VrpanoIcon from "@mui/icons-material/Vrpano";
 
 export default function DetailCard() {
-  return (
-    <List sx={{ width: "100%", maxWidth: 360, p: 0 }}>
-      <ListItem sx={{ p: 0, width: "fit-content" }}>
-        <ListItemAvatar
-          sx={{
-            mx: 1,
-            p: 0.2,
-            border: 1,
-            borderRadius: "50%",
-            borderColor: "secondary.main",
-          }}
-        >
-          <IconButton sx={{ padding: 0 }}>
-            <Avatar
-              alt="Travis Howard"
-              src={Thumbnail}
-              sx={{ width: 56, height: 56 }}
-            />
-          </IconButton>
-        </ListItemAvatar>
-        <ListItemText primary="Building Name" secondary="455" />
-      </ListItem>
-    </List>
-  );
+  const { currentClickedLocation } = useContext(StateControllerContext);
+  function truncateSentence(sentence, maxWords) {
+    const words = sentence.split(" ");
+    if (words.length > maxWords) {
+      const truncatedWords = words.slice(0, maxWords);
+      return truncatedWords.join(" ") + "...";
+    }
+    return sentence;
+  }
+  let truncatedSentence;
+  if (currentClickedLocation) {
+    truncatedSentence = truncateSentence(
+      currentClickedLocation.buildingDescription,
+      26
+    );
+  }
+
+  if (currentClickedLocation) {
+    return (
+      <Card
+        sx={{
+          width: 345,
+          position: "absolute",
+          bottom: 0,
+          right: "7em",
+        }}
+      >
+        <CardContent>
+          <Typography gutterBottom variant="h6" component="div">
+            {currentClickedLocation.buildingName}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {truncatedSentence}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button
+            variant="contained"
+            endIcon={<VrpanoIcon />}
+            sx={{ mx: "auto" }}
+          >
+            Go To Street View
+          </Button>
+        </CardActions>
+      </Card>
+    );
+  }
 }
