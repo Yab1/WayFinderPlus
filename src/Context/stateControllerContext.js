@@ -1,4 +1,4 @@
-import { useState, createContext, useRef, useEffect } from "react";
+import { useState, createContext, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 
 export const StateControllerContext = createContext();
@@ -8,6 +8,11 @@ export default function StateControllerContextProvider({ children }) {
   const [destinations, setDestinations] = useState("");
   const [startPoint, setStartPoint] = useState("");
   const [currentClickedLocation, setCurrentClickedLocation] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState({
+    value: "...View All...",
+    key: 17,
+  });
+  const [markers, setMarkers] = useState([]);
   const [routes, setRoutes] = useState("");
   const [url, setUrl] = useState("");
 
@@ -25,6 +30,13 @@ export default function StateControllerContextProvider({ children }) {
 
   const setCurrentClickedLocationState = (building) => {
     setCurrentClickedLocation(building);
+  };
+  const setSelectedCategoryState = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const setMarkersState = (data) => {
+    setMarkers(data);
   };
 
   useEffect(() => {
@@ -47,12 +59,16 @@ export default function StateControllerContextProvider({ children }) {
     userLocation,
     destinations,
     startPoint,
+    selectedCategory,
+    markers,
     routes,
     currentClickedLocation,
     setUserLocationState,
     setDestinationsState,
     setStartPointState,
     setCurrentClickedLocationState,
+    setSelectedCategoryState,
+    setMarkersState,
   };
 
   return (

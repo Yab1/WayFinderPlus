@@ -7,7 +7,11 @@ import { MapMetaDataContext } from "../../../Context/mapMetaDataContext";
 import { BuildingsContext } from "../../../Context/buildingsContext";
 
 // Functions
-import createMarker from "../../../functions/createMarker";
+import {
+  removeMarker,
+  createMarker,
+  addMarker,
+} from "../../../functions/createMarker";
 
 // MapBox
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
@@ -17,7 +21,12 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Card from "@mui/material/Card";
 
 const MapContainer = () => {
-  const { setCurrentClickedLocationState } = useContext(StateControllerContext);
+  const {
+    selectedCategory,
+    markers,
+    setCurrentClickedLocationState,
+    setMarkersState,
+  } = useContext(StateControllerContext);
   const { map, handleMap } = useContext(MapMetaDataContext);
   const { buildingsData } = useContext(BuildingsContext);
 
@@ -40,9 +49,19 @@ const MapContainer = () => {
 
   useEffect(() => {
     if (map && buildingsData) {
-      createMarker(map, buildingsData, setCurrentClickedLocationState);
+      removeMarker(markers);
+      createMarker(
+        buildingsData,
+        selectedCategory,
+        setCurrentClickedLocationState,
+        setMarkersState
+      );
     }
-  }, [buildingsData, map]);
+  }, [buildingsData, selectedCategory, map]);
+
+  useEffect(() => {
+    addMarker(map, markers);
+  }, [markers]);
 
   return (
     <Card

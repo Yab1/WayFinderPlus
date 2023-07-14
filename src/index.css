@@ -42,7 +42,7 @@ img {
 .SideBarLeft {
   position: absolute;
   top: 0;
-  width: 10%;
+  width: fit-content;
   height: 80%;
   display: flex;
   flex-direction: column;
@@ -93,16 +93,4 @@ img {
   100% {
     opacity: 1;
   }
-}
-.buildingMarker {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: black;
-  width: 2em;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  background: grey;
-  border: 0.3em solid white;
 }
