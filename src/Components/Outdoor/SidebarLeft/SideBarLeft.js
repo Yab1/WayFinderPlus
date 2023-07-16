@@ -4,6 +4,7 @@ import { useContext } from "react";
 // Context
 import { StateControllerContext } from "../../../Context/stateControllerContext";
 import { BuildingsContext } from "../../../Context/buildingsContext";
+import { MapMetaDataContext } from "../../../Context/mapMetaDataContext";
 
 // utils
 import categories from "../../../utils/categories";
@@ -19,6 +20,7 @@ const SideBarLeft = () => {
   const { selectedCategory, setSelectedCategoryState } = useContext(
     StateControllerContext
   );
+  const { resetView } = useContext(MapMetaDataContext);
   const { buildingsData } = useContext(BuildingsContext);
   return (
     <section className="SideBarLeft">
@@ -50,6 +52,7 @@ const SideBarLeft = () => {
             }}
             onClick={() => {
               setSelectedCategoryState(category);
+              resetView();
             }}
           >
             {category.value}
