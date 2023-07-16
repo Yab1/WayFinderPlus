@@ -11,7 +11,7 @@ import {
   removeMarker,
   createMarker,
   addMarker,
-} from "../../../functions/createMarker";
+} from "../../../functions/mapbox/createMarker";
 
 // MapBox
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";

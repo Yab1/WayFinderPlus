@@ -6,9 +6,9 @@ import { StateControllerContext } from "../../../Context/stateControllerContext"
 import { MapMetaDataContext } from "../../../Context/mapMetaDataContext";
 
 // Functions
-import getUserLocation from "../../../functions/getUserLocation";
-import zoomIn from "../../../functions/zoomIn";
-import zoomOut from "../../../functions/zoomOut";
+import getUserLocation from "../../../functions/mapbox/getUserLocation";
+import zoomIn from "../../../functions/mapbox/zoomIn";
+import zoomOut from "../../../functions/mapbox/zoomOut";
 
 // MUI Components
 import Stack from "@mui/material/Stack";

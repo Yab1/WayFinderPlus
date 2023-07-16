@@ -7,9 +7,9 @@ import { MapMetaDataContext } from "../../../Context/mapMetaDataContext";
 import { BuildingsContext } from "../../../Context/buildingsContext";
 
 //Function
-import getUserLocation from "../../../functions/getUserLocation";
-import route from "../../../functions/route";
-import decodeGeoHash from "../../../Services/Firebase/decodeGeoHash";
+import getUserLocation from "../../../functions/mapbox/getUserLocation";
+import route from "../../../functions/mapbox/route";
+import decodeGeoHash from "../../../functions/firebase/decodeGeoHash";
 
 // MUI Components
 import Card from "@mui/material/Card";

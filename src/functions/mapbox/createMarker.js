@@ -1,5 +1,5 @@
 import mapboxgl from "mapbox-gl";
-import decodeGeoHash from "../Services/Firebase/decodeGeoHash";
+import decodeGeoHash from "../firebase/decodeGeoHash";
 
 export function removeMarker(markers) {
   markers.forEach((marker) => marker.remove());
