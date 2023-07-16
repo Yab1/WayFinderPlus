@@ -1,6 +1,6 @@
 // Components
-import DetailCard from "./detailCard";
-import Directions from "./directions";
+import DetailCard from "./DetailCard";
+import Directions from "./Directions";
 
 const Footer = () => {
   return (
