@@ -3,7 +3,7 @@ export default function zoomOut(map) {
     const currentZoom = map.getZoom();
     if (currentZoom > 15.5) {
       const newZoom = currentZoom - 0.5;
-      map.setZoom(newZoom);
+      map.flyTo({ zoom: newZoom });
     }
   }
 }

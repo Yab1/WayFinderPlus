@@ -31,7 +31,6 @@ const addMarkerToMap = (map, latitude, longitude) => {
     })
       .setLngLat([longitude, latitude])
       .addTo(map);
-    map.setCenter([longitude, latitude]);
-    map.setZoom(17);
+    map.flyTo({ center: [longitude, latitude], zoom: 16 });
   }
 };
