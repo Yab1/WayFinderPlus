@@ -34,7 +34,7 @@ WayFinderPlus is a comprehensive web-based navigation tool designed to make your
 
 ## Screenshots
 
-![WayFinderPlus Screenshot]() <!-- Place your screenshot image here -->
+![WayFinderPlus Screenshot](https://github.com/Yab1/WayfinderPlus/blob/main/src/assets/screenshot.png) <!-- Place your screenshot image here -->
 
 ## Contributing
 
