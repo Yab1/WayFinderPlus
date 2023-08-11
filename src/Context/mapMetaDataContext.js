@@ -30,8 +30,7 @@ export default function MapMetaDataContextProvider({ children }) {
   useEffect(() => {
     if (metaData) {
       const { latitude, longitude } = decodeGeoHash(metaData[0].center);
-      mapboxgl.accessToken =
-        "pk.eyJ1IjoiYWZyb2hhYmVzaGEiLCJhIjoiY2xnb3F0cDYzMGYzNjNlb2d2dXhtdzRqbSJ9.JW2kyDZjoOWoXVPG5Giw7g";
+      mapboxgl.accessToken = process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN;
       const mapBox = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/outdoors-v12",
