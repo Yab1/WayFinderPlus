@@ -15,26 +15,45 @@ import {
 
 // MUI Components
 import Card from "@mui/material/Card";
+import { MapSharp } from "@mui/icons-material";
 
 const MapContainer = () => {
   const {
     selectedCategory,
     markers,
     setCurrentClickedLocationState,
+    setShowCardState,
     setMarkersState,
   } = useContext(StateControllerContext);
   const { map, handleMap } = useContext(MapMetaDataContext);
   const { buildingsData } = useContext(BuildingsContext);
 
   useEffect(() => {
+    const handleMarkerClick = (event) => {
+      const clickedMarker = event.target.closest(".buildingMarker");
+      if (clickedMarker) {
+        const currentBuilding = buildingsData.filter(
+          (building) => building.id === clickedMarker.id
+        );
+        setShowCardState();
+        setCurrentClickedLocationState(...currentBuilding);
+      }
+    };
+    if (map) {
+      const mapBox = document.querySelector("#map");
+      mapBox.addEventListener("click", (event) => handleMarkerClick(event));
+      return () => {
+        mapBox.removeEventListener("click", (event) =>
+          handleMarkerClick(event)
+        );
+      };
+    }
+  }, [map]);
+
+  useEffect(() => {
     if (map && buildingsData) {
       removeMarker(markers);
-      createMarker(
-        buildingsData,
-        selectedCategory,
-        setCurrentClickedLocationState,
-        setMarkersState
-      );
+      createMarker(buildingsData, selectedCategory, setMarkersState);
     }
   }, [buildingsData, selectedCategory, map]);
 
