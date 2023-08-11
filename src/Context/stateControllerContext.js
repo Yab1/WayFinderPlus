@@ -7,7 +7,8 @@ export default function StateControllerContextProvider({ children }) {
   const [userLocation, setUserLocation] = useState("");
   const [destinations, setDestinations] = useState("");
   const [startPoint, setStartPoint] = useState("");
-  const [currentClickedLocation, setCurrentClickedLocation] = useState("");
+  const [currentClickedLocation, setCurrentClickedLocation] = useState(null);
+  const [showCard, setShowCard] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState({
     value: "...View All...",
     key: 17,
@@ -30,6 +31,9 @@ export default function StateControllerContextProvider({ children }) {
 
   const setCurrentClickedLocationState = (building) => {
     setCurrentClickedLocation(building);
+  };
+  const setShowCardState = () => {
+    setShowCard(!showCard);
   };
   const setSelectedCategoryState = (category) => {
     setSelectedCategory(category);
@@ -67,6 +71,8 @@ export default function StateControllerContextProvider({ children }) {
     setDestinationsState,
     setStartPointState,
     setCurrentClickedLocationState,
+    showCard,
+    setShowCardState,
     setSelectedCategoryState,
     setMarkersState,
   };
