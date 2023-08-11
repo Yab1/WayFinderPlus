@@ -6,12 +6,7 @@ export function removeMarker(markers) {
   markers.length = 0;
 }
 
-export function createMarker(
-  buildingsData,
-  selectedCategory,
-  setCurrentClickedLocationState,
-  setMarkersState
-) {
+export function createMarker(buildingsData, selectedCategory, setMarkersState) {
   if (buildingsData === []) return;
 
   let mapArr = [];
@@ -27,9 +22,7 @@ export function createMarker(
   filteredData.forEach((building) => {
     const markerElement = document.createElement("div");
     markerElement.className = "buildingMarker";
-    markerElement.addEventListener("click", () => {
-      setCurrentClickedLocationState(building);
-    });
+    markerElement.id = building.id;
     const { latitude, longitude } = decodeGeoHash(building.geoHash);
     const buildingNumber = document.createTextNode(building.buildingNumber);
     markerElement.appendChild(buildingNumber);
