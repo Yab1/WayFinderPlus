@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyByUMrb32XM9dFUK1sMp_8W6hEm8PnF49s",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "customized-navigation-system.firebaseapp.com",
   projectId: "customized-navigation-system",
   storageBucket: "customized-navigation-system.appspot.com",
