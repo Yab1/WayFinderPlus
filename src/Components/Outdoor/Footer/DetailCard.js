@@ -4,6 +4,9 @@ import { useContext, useEffect, useState } from "react";
 // Context
 import { StateControllerContext } from "../../../Context/stateControllerContext";
 
+// Flamer Motion
+import { AnimatePresence, motion } from "framer-motion";
+
 // MUI Components
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -14,8 +17,19 @@ import Typography from "@mui/material/Typography";
 // MUI Icon
 import VrpanoIcon from "@mui/icons-material/Vrpano";
 
+const cardVariant = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.1, type: "spring", damping: 8, weight: 10 },
+  },
+  exit: { opacity: 0, transition: { duration: 0.5 } },
+};
+
 export default function DetailCard() {
-  const { currentClickedLocation } = useContext(StateControllerContext);
+  const { currentClickedLocation, showCard, setShowCardState } = useContext(
+    StateControllerContext
+  );
   function truncateSentence(sentence, maxWords) {
     const words = sentence.split(" ");
     if (words.length > maxWords) {
@@ -32,34 +46,53 @@ export default function DetailCard() {
     );
   }
 
-  if (currentClickedLocation) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowCardState();
+    }, 3000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [currentClickedLocation]);
+
+  if (currentClickedLocation && showCard) {
     return (
-      <Card
-        sx={{
-          width: 345,
-          position: "absolute",
-          bottom: 0,
-          right: "7em",
-        }}
-      >
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {currentClickedLocation.buildingName}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {truncatedSentence}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button
-            variant="contained"
-            endIcon={<VrpanoIcon />}
-            sx={{ mx: "auto" }}
+      <AnimatePresence>
+        <motion.div
+          variants={cardVariant}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <Card
+            sx={{
+              width: 345,
+              position: "absolute",
+              bottom: 0,
+              right: "7em",
+            }}
           >
-            Go To Street View
-          </Button>
-        </CardActions>
-      </Card>
+            <CardContent>
+              <Typography gutterBottom variant="h6" component="div">
+                {currentClickedLocation.buildingName}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {truncatedSentence}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                variant="contained"
+                endIcon={<VrpanoIcon />}
+                sx={{ mx: "auto" }}
+              >
+                Go To Street View
+              </Button>
+            </CardActions>
+          </Card>
+        </motion.div>
+      </AnimatePresence>
     );
   }
 }
