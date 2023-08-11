@@ -1,6 +1,6 @@
 # WayFinderPlus - Your Ultimate Indoor and Outdoor Navigation Assistant
 
-![WayFinderPlus Logo](https://github.com/Yab1/WayfinderPlus/blob/main/src/assets/WayfinderPlus%20Logo.png) <!-- Place your logo image here -->
+![WayFinderPlus Logo](https://github.com/Yab1/WayfinderPlus/blob/main/src/assets/WayfinderPlus%20Logo%20only.png.png) <!-- Place your logo image here -->
 
 Welcome to WayFinderPlus, your go-to online navigation assistant for seamless and efficient travel experiences, whether you're exploring outdoor areas or navigating indoor spaces. WayFinderPlus provides you with accurate directions, real-time traffic updates, and useful travel information, all from the comfort of your web browser.
 
