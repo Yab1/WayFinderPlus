@@ -43,5 +43,5 @@ Contributions are welcome! If you'd like to contribute to WayFinderPlus or sugge
 ---
 
 Visit WayFinderPlus [Live Demo]()  
-Connect with us:  
-Follow us on [LinkedIn](https://www.linkedin.com/in/your-profile/) | Check out our [GitHub](https://github.com/your-username) repository
+Connect with me:  
+Follow us me [LinkedIn](https://www.linkedin.com/in/your-profile/) | Check out my [GitHub](https://github.com/your-username) repository
