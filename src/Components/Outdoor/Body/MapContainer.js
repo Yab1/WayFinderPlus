@@ -15,7 +15,6 @@ import {
 
 // MUI Components
 import Card from "@mui/material/Card";
-import { MapSharp } from "@mui/icons-material";
 
 const MapContainer = () => {
   const {
