@@ -6,7 +6,7 @@ const firebaseConfig = {
   projectId: "customized-navigation-system",
   storageBucket: "customized-navigation-system.appspot.com",
   messagingSenderId: "3696229373",
-  appId: "1:3696229373:web:a1268fd804d7c55160f794",
+  appId: process.env.REACT_APP_FIREBASE_API_ID,
 };
 
 // init firebase app
