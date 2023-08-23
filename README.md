@@ -42,6 +42,7 @@ Contributions are welcome! If you'd like to contribute to WayFinderPlus or sugge
 
 ---
 
-Visit WayFinderPlus [Live Demo]()  
+Visit WayFinderPlus [Live Demo](https://way-finder-plus.vercel.app/)
+
 Connect with me:  
-Follow us me [LinkedIn](https://www.linkedin.com/in/your-profile/) | Check out my [GitHub](https://github.com/your-username) repository
+Visit my website at [Yeabsera](yeabsera-girxkocyp-yab1.vercel.app) | Follow me on [LinkedIn](https://www.linkedin.com/in/yeabsera-lisanework-7570981ba/) | Check out my [GitHub](https://github.com/Yab1)
