@@ -12,6 +12,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
 // MUI Icon
@@ -49,13 +50,12 @@ export default function DetailCard() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowCardState();
-    }, 3000);
+    }, 3500);
 
     return () => {
       clearInterval(timer);
     };
-  }, [currentClickedLocation]);
-
+  });
   if (currentClickedLocation && showCard) {
     return (
       <AnimatePresence>
@@ -87,7 +87,14 @@ export default function DetailCard() {
                 endIcon={<VrpanoIcon />}
                 sx={{ mx: "auto" }}
               >
-                Go To Street View
+                <Link
+                  target="_blank"
+                  href="https://yab1.github.io/WayFinderPlus-VR/"
+                  underline="none"
+                  sx={{ color: "white" }}
+                >
+                  Go To Street View
+                </Link>
               </Button>
             </CardActions>
           </Card>
