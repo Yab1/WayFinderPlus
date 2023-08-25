@@ -81,7 +81,7 @@ export default function Directions() {
         bottom: 0,
         py: 3,
         px: 3,
-        display: "flex",
+        display: { xs: "none", sm: "none", md: "flex" },
         flexDirection: "column",
       }}
     >
