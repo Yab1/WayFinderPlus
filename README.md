@@ -27,7 +27,7 @@ WayFinderPlus is a comprehensive web-based navigation tool designed to make your
 
 ## Usage
 
-1. Visit the WayFinderPlus VR at [Indoor]().
+1. Visit the WayFinderPlus VR at [Indoor](https://yab1.github.io/WayFinderPlus-VR/).
 2. Choose outdoor or indoor navigation based on your needs.
 3. Enter your destination address or choose a point of interest.
 4. Receive detailed navigation instructions and real-time updates.
