@@ -88,6 +88,17 @@ img {
   animation: flicker 1s infinite;
 }
 
+.detailCard {
+  position: absolute;
+  bottom: 0;
+}
+
+@media screen and (min-width: 900px) {
+  .detailCard {
+    right: 7em;
+  }
+}
+
 @keyframes flicker {
   0% {
     opacity: 1;
