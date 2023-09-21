@@ -5,7 +5,7 @@ import Directions from "./Directions";
 const Footer = () => {
   return (
     <footer className="Footer">
-      <Directions />
+      {/* <Directions /> */}
       <DetailCard />
     </footer>
   );
