@@ -56,10 +56,12 @@ export default function DetailCard() {
       clearInterval(timer);
     };
   });
+
   if (currentClickedLocation && showCard) {
     return (
       <AnimatePresence>
         <motion.div
+          className="detailCard"
           variants={cardVariant}
           initial="hidden"
           animate="visible"
@@ -67,14 +69,16 @@ export default function DetailCard() {
         >
           <Card
             sx={{
-              width: 345,
-              position: "absolute",
-              bottom: 0,
-              right: "7em",
+              width: { xs: 300, sm: 300, md: 345 },
             }}
           >
             <CardContent>
-              <Typography gutterBottom variant="h6" component="div">
+              <Typography
+                gutterBottom
+                variant="h6"
+                component="div"
+                sx={{ textTransform: "capitalize" }}
+              >
                 {currentClickedLocation.buildingName}
               </Typography>
               <Typography variant="body2" color="text.secondary">
